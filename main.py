@@ -279,4 +279,21 @@ import random
 numers = random.randint(10, 12)
 choice = random.choice(["apple", "banana", "orange"])
 
-import  pandas as pd 
+
+
+
+
+# first api call example
+import requests
+def  get_weather(latitude,longitude):
+    response = requests.get(f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current_weather=true")
+    data = response.json()
+    return data["current"]["temperature"]
+
+paris_temp=get_weather(48.8566, 2.3522)
+london_temp=get_weather(51.5074, -0.1278)
+tokyo_temp=get_weather(35.6895, 139.6917)
+
+print(f"Current temperature in Paris: {paris_temp}°C")
+print(f"Current temperature in London: {london_temp}°C")  
+print(f"Current temperature in Tokyo: {tokyo_temp}°C")  
